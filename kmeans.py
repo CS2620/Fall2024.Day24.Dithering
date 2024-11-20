@@ -50,8 +50,8 @@ def color_distance(one, two):
     g_diff = one[1] - two[1]
     b_diff = one[2] - two[2]
 
-    return abs(r_diff) + abs(g_diff) + abs(b_diff)
-    # return math.sqrt((r_diff)**2+(g_diff)**2+(b_diff)**2)
+    # return abs(r_diff) + abs(g_diff) + abs(b_diff)
+    return math.sqrt((r_diff)**2+(g_diff)**2+(b_diff)**2)
 
 image = Image.open("fish.jpg")
 data = image.load()

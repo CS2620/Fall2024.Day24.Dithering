@@ -5,8 +5,8 @@ def color_distance(one, two):
     g_diff = one[1] - two[1]
     b_diff = one[2] - two[2]
 
-    return abs(r_diff) + abs(g_diff) + abs(b_diff)
-    # return math.sqrt((r_diff)**2+(g_diff)**2+(b_diff)**2)
+    # return abs(r_diff) + abs(g_diff) + abs(b_diff)
+    return math.sqrt((r_diff)**2+(g_diff)**2+(b_diff)**2)
 
 
 def remap(image, data, palette, filename):
@@ -52,6 +52,7 @@ def remap_dither(image, data, palette, filename):
           distance = color_distance(color1, color2)
           row.append(distance)
       palette_distances.append(row)
+
       
   error_matrix = []
   for x in range(image.width+1):
@@ -63,10 +64,13 @@ def remap_dither(image, data, palette, filename):
   
   for y in range(image.height):
     for x in range(image.width):
+      if x == 292 and y == 107:
+         pass
+
       pixel = data[x,y]
       error = error_matrix[x][y]
       pixel = (pixel[0] + error[0], pixel[1] + error[1], pixel[2] + error[2])
-      min_distance = 442
+      min_distance = 442000
       min_index = 0
       for i,color in enumerate(palette):
 
